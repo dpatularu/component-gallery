@@ -1,0 +1,137 @@
+@import "https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap";
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin reset-button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+// Primary Colors
+$orange: hsl(25, 97%, 53%);
+
+// Neutral Colors
+$white: hsl(0, 0%, 100%);
+$lightGrey: hsl(217, 12%, 63%);
+$mediumGrey: hsl(216, 12%, 54%);
+$darkBlue: hsl(213, 19%, 18%);
+$veryDarkBlue: hsl(216, 12%, 8%);
+$superDarkBlue: hsl(215, 22%, 15%);
+
+// Radii
+$radius: 30px;
+
+.body {
+  @include flex-center;
+  min-height: 100vh;
+  font-size: 15px;
+  font-family: "Overpass", sans-serif;
+  background-color: $veryDarkBlue;
+}
+
+article {
+  @include flex-column;
+  justify-content: space-around;
+  max-width: 360px;
+  height: 450px;
+  padding: 30px;
+  background-color: $superDarkBlue;
+  border-radius: 30px;
+}
+
+.stars {
+  display: flex;
+  justify-content: space-evenly;
+  height: 45px;
+  .star {
+    @include flex-center;
+    width: 45px;
+    height: 45px;
+    background-color: $darkBlue;
+    border-radius: 100%;
+  }
+}
+
+.content {
+  .header {
+    color: $white;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+
+  .text {
+    color: $mediumGrey;
+    line-height: 1.5;
+  }
+}
+
+.ratings {
+  display: flex;
+  justify-content: space-between;
+  .ratingBtn {
+    @include reset-button;
+    @include flex-center;
+    width: 45px;
+    height: 45px;
+    background-color: $darkBlue;
+    color: $mediumGrey;
+    border-radius: 100%;
+
+    &:hover {
+      color: $white;
+      background-color: $orange;
+    }
+    &.focus {
+      color: $white;
+      background-color: $lightGrey;
+    }
+  }
+}
+
+.submitBtn {
+  @include reset-button;
+  width: 100%;
+  height: 45px;
+  border-radius: $radius;
+  background-color: $orange;
+  color: $white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+
+  &:hover {
+    color: $orange;
+    background-color: $white;
+  }
+}
+
+.submitScreen {
+  @include flex-column;
+  align-items: center;
+  height: 100%;
+  justify-content: space-evenly;
+  text-align: center;
+  img {
+    width: 150px;
+  }
+
+  .ratingDisplay {
+    color: $orange;
+    background-color: $darkBlue;
+    padding: 10px;
+    border-radius: $radius;
+  }
+}

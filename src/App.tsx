@@ -1,7 +1,13 @@
 import React from "react";
+import styles from "./App.module.scss";
+import InteractiveRating from "./components/InteractiveRating/InteractiveRating";
 
-function App() {
-  return <div className="App"></div>;
-}
+const App = () => {
+  return (
+    <div className={styles.App}>
+      <InteractiveRating />
+    </div>
+  );
+};
 
 export default App;
