@@ -4,7 +4,7 @@ import star from "./images/icon-star.svg";
 import thankyou from "./images/illustration-thank-you.svg";
 
 const InteractiveRating: FC = () => {
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(3);
   const [submitted, setSubmitted] = useState(false);
 
   return (

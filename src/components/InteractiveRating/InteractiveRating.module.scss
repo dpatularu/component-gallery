@@ -90,6 +90,7 @@ article {
     background-color: $darkBlue;
     color: $mediumGrey;
     border-radius: 100%;
+    transition: background-color 75ms ease;
 
     &:hover {
       color: $white;
@@ -111,6 +112,7 @@ article {
   color: $white;
   text-transform: uppercase;
   letter-spacing: 3px;
+  transition: background-color 75ms ease-out;
 
   &:hover {
     color: $orange;
