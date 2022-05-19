@@ -10,9 +10,6 @@ const App = () => {
         <InteractiveRating />
         <InteractiveRating />
         <InteractiveRating />
-        <InteractiveRating />
-        <InteractiveRating />
-        <InteractiveRating />
       </Carousel>
     </div>
   );
