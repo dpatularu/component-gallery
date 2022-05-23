@@ -57,8 +57,8 @@ const StarRating = ({ rating }) => {
     <div className={styles.stars}>
       {Array(rating)
         .fill(0)
-        .map(() => (
-          <div className={styles.star}>
+        .map((a, index) => (
+          <div key={index} className={styles.star}>
             <img src={star} alt="An orange star" />
           </div>
         ))}

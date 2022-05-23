@@ -1,0 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+
+//Main Colors
+$veryDarkDesaturatedBlue: hsl(238, 29%, 16%);
+$softRed: hsl(14, 88%, 65%);
+
+//Gradient
+$softViolet: hsl(273, 75%, 66%);
+$softBlue: hsl(240, 73%, 65%);
+
+//Text
+$veryDarkGrayishBlue: hsl(237, 12%, 33%);
+$darkGrayishBlue: hsl(240, 6%, 50%);
+
+//Divider
+$lightGrayishBlue: hsl(240, 5%, 91%);
+
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: linear-gradient($softViolet, $softBlue);
+  font-size: 13px;
+  font-family: "Kumbh Sans", sans-serif;
+  .box {
+    position: relative;
+    bottom: 150px;
+    left: 0px;
+    z-index: 1;
+  }
+  article {
+    overflow: hidden;
+    display: flex;
+    margin: 0 10px;
+    max-width: 900px;
+    min-height: 590px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+    .imageContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40%;
+      background-image: url(./images/bg-pattern-desktop.svg);
+      background-position: -190px 20px;
+      background-repeat: no-repeat;
+      background-size: 550px 550px;
+
+      .desktopIllustration {
+        position: relative;
+        right: 50px;
+      }
+    }
+    .textContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      gap: 10px;
+      padding: 0 80px;
+      width: 60%;
+
+      h3 {
+        font-size: 30px;
+        color: $veryDarkGrayishBlue;
+      }
+
+      .accordion {
+        border-bottom: 1px solid $lightGrayishBlue;
+        padding: 10px 0;
+        .dark {
+          color: $veryDarkGrayishBlue;
+        }
+        .title {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 10px;
+          font-size: 15px;
+          color: $darkGrayishBlue;
+          cursor: pointer;
+
+          :hover {
+            color: $veryDarkGrayishBlue;
+          }
+        }
+
+        .arrow {
+          transition: transform 200ms ease-in-out;
+          width: 10px;
+          height: 10px;
+        }
+
+        .flip {
+          transform: rotate(180deg);
+        }
+
+        p {
+          color: $darkGrayishBlue;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 910px) {
+  .body {
+    article {
+      flex-direction: column;
+      max-width: 550px;
+      min-height: auto;
+      margin: 0 60px;
+      padding: 60px 0;
+
+      .imageContainer {
+        display: none;
+        background-image: none;
+        justify-content: center;
+        width: auto;
+        .desktopIllustration {
+          position: static;
+        }
+      }
+
+      .textContainer {
+        width: auto;
+        margin: auto;
+        padding: 0;
+        width: 80%;
+        h3 {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.slideUp,
+.slideDown {
+  overflow: hidden;
+}
+.slideUp > p,
+.slideDown > p {
+  margin-top: -70px;
+  transition: margin-top 500ms ease-out;
+}
+.slideDown > p {
+  margin-top: 0;
+}

@@ -1,5 +1,14 @@
 @import "https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap";
 
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @mixin flex-column {
   display: flex;
   flex-direction: column;
@@ -40,28 +49,30 @@ $radius: 30px;
   font-size: 15px;
   font-family: "Overpass", sans-serif;
   background-color: $veryDarkBlue;
-}
+  height: 100%;
 
-article {
-  @include flex-column;
-  justify-content: space-around;
-  max-width: 360px;
-  height: 450px;
-  padding: 30px;
-  background-color: $superDarkBlue;
-  border-radius: 30px;
+  article {
+    @include flex-column;
+    justify-content: space-around;
+    max-width: 360px;
+    height: 450px;
+    padding: 30px;
+    background-color: $superDarkBlue;
+    border-radius: 30px;
+  }
 }
 
 .stars {
   display: flex;
-  justify-content: space-evenly;
   height: 45px;
+  gap: 18px;
   .star {
     @include flex-center;
     width: 45px;
     height: 45px;
     background-color: $darkBlue;
     border-radius: 100%;
+    animation: fadein 0.3s;
   }
 }
 
@@ -135,5 +146,15 @@ article {
     background-color: $darkBlue;
     padding: 10px;
     border-radius: $radius;
+  }
+}
+
+@media (max-width: 500px) {
+  .body {
+    align-items: flex-start;
+
+    article {
+      margin-top: 50%;
+    }
   }
 }

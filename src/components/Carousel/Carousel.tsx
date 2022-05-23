@@ -39,48 +39,58 @@ const Carousel = ({ width, children }) => {
       setTimeout(() => {
         setDisableAnimation(true);
         setVisibleSlide(numSlides - 1);
-      }, 100);
+      }, 250);
     }
 
     if (visibleSlide === 1 || visibleSlide === numSlides - 1) {
       setTimeout(() => {
         setDisableAnimation(false);
-      }, 100);
+      }, 250);
     }
 
     if (visibleSlide === numSlides) {
       setTimeout(() => {
         setDisableAnimation(true);
         setVisibleSlide(1);
-      }, 100);
+      }, 250);
     }
   }, [visibleSlide]);
 
   return (
     <>
       <nav>
-        <h1>Component Gallery</h1>
         <div>
-          <button onClick={scrollLeft}>&#8592;</button>
-          {displaySlideNumber()} / {children.length}
-          <button onClick={scrollRight}>&#8594;</button>
+          <p>Component Gallery</p>
+          <p className={styles.small}>Made by Daniel Patularu</p>
+          <div className={styles.controls}>
+            <button onClick={scrollLeft}>&#8592;</button>
+            {displaySlideNumber()} / {children.length}
+            <button onClick={scrollRight}>&#8594;</button>
+          </div>
         </div>
       </nav>
-
-      <div
-        className={`${styles.carousel}`}
-        style={{
-          width: `${width}`,
-        }}
-      >
+      {/* <button className={styles.left} onClick={scrollLeft}>
+        &#8592;
+      </button>
+      <button className={styles.right} onClick={scrollRight}>
+        &#8594;
+      </button> */}
+      <div className={`${styles.carousel}`}>
         <div
           className={`${styles.slider} ${
             !disableAnimation ? styles.transition : ""
           }`}
-          style={{ left: `${calculateLeftMargin()}%` }}
+          style={{ left: `${calculateLeftMargin()}vw` }}
         >
-          {stateSlides.map((slide) => (
-            <div style={{ width: `${width}` }}>{slide}</div>
+          {stateSlides.map((slide, index) => (
+            <div
+              key={index}
+              style={{
+                width: `${width}`,
+              }}
+            >
+              {slide}
+            </div>
           ))}
         </div>
       </div>
