@@ -21,7 +21,7 @@ $lightGrayishBlue: hsl(240, 5%, 91%);
   align-items: center;
   height: 100%;
   background: linear-gradient($softViolet, $softBlue);
-  font-size: 13px;
+  font-size: 14px;
   font-family: "Kumbh Sans", sans-serif;
   .box {
     position: relative;
@@ -64,7 +64,7 @@ $lightGrayishBlue: hsl(240, 5%, 91%);
       width: 60%;
 
       h3 {
-        font-size: 30px;
+        font-size: 36px;
         color: $veryDarkGrayishBlue;
       }
 
@@ -79,7 +79,7 @@ $lightGrayishBlue: hsl(240, 5%, 91%);
           justify-content: space-between;
           align-items: center;
           margin-bottom: 10px;
-          font-size: 15px;
+          font-size: 16px;
           color: $darkGrayishBlue;
           cursor: pointer;
 

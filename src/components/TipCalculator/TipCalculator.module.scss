@@ -1,0 +1,280 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap");
+
+@mixin reset-button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+$strongCyan: hsl(172, 67%, 45%);
+
+$veryDarkCyan: hsl(183, 100%, 15%);
+$darkGrayishCyan: hsl(186, 14%, 43%);
+$grayishCyan: hsl(184, 14%, 56%);
+$cyan: hsl(172, 49%, 78%);
+$lightGrayishCyan: hsl(185, 41%, 84%);
+$veryLightGrayishCyan: hsl(189, 41%, 97%);
+$white: hsl(0, 0%, 100%);
+$green: hsl(173, 31%, 52%);
+$radius: 15px;
+
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: $lightGrayishCyan;
+
+  .logo {
+    position: relative;
+    bottom: 70px;
+  }
+
+  article {
+    display: flex;
+    gap: 15px;
+    width: 700px;
+    height: 400px;
+    background-color: $white;
+    padding: 25px;
+    border-radius: 15px;
+    font-family: "Space Mono", sans-serif;
+    margin: 0 5px;
+
+    .inputContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      flex-basis: 100%;
+      color: $darkGrayishCyan;
+      font-size: 14px;
+      padding: 10px 0;
+      gap: 35px;
+
+      & > div > p {
+        margin-bottom: 10px;
+      }
+
+      .billInput {
+        .textFieldContainer {
+          position: relative;
+          &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: url("./images/icon-dollar.svg") no-repeat;
+            width: 50px;
+            height: 50px;
+          }
+        }
+        input {
+          font-family: "Space Mono", sans-serif;
+          background-color: $veryLightGrayishCyan;
+          direction: rtl;
+          width: 100%;
+          border: none;
+          padding: 8px 15px;
+          border-radius: 4px;
+          font-size: 20px;
+
+          &::placeholder {
+            color: $darkGrayishCyan;
+            font-size: 20px;
+          }
+
+          &:focus {
+            outline: 2px solid $green;
+          }
+        }
+
+        .badInput {
+          outline: 2px solid hsl(13, 31%, 54%);
+
+          &:focus {
+            outline: 2px solid hsl(13, 31%, 54%);
+          }
+        }
+      }
+
+      .tipSelection {
+        .tipContainer {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          button {
+            @include reset-button;
+            background-color: $veryDarkCyan;
+            color: $white;
+            border-radius: 4px;
+            padding: 6px 15px;
+            flex-basis: 90px;
+            flex-grow: 1;
+            font-size: 20px;
+
+            &:hover {
+              background-color: $cyan;
+              color: $veryDarkCyan;
+            }
+
+            &.selected {
+              color: $veryDarkCyan;
+              background-color: $strongCyan;
+            }
+          }
+          input {
+            font-family: "Space Mono", sans-serif;
+            background-color: $veryLightGrayishCyan;
+            color: $veryDarkCyan;
+            border: none;
+            direction: rtl;
+            width: 50px;
+            border-radius: 4px;
+            padding: 6px 10px;
+            flex-basis: 90px;
+            flex-grow: 1;
+            font-size: 20px;
+
+            &::placeholder {
+              color: $veryDarkCyan;
+              font-size: 20px;
+            }
+
+            &:focus {
+              outline: 2px solid $green;
+            }
+          }
+        }
+      }
+
+      .numPeopleInput {
+        .textFieldContainer {
+          position: relative;
+          &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: url("./images/icon-person.svg") no-repeat;
+            width: 50px;
+            height: 50px;
+          }
+        }
+        input {
+          font-family: "Space Mono", sans-serif;
+          background-color: $veryLightGrayishCyan;
+          direction: rtl;
+          width: 100%;
+          border: none;
+          padding: 8px 15px;
+          border-radius: 4px;
+          font-size: 20px;
+
+          &::placeholder {
+            color: $darkGrayishCyan;
+            font-size: 20px;
+          }
+
+          &:focus {
+            outline: 2px solid $green;
+          }
+        }
+        .badInput {
+          outline: 2px solid hsl(13, 31%, 54%);
+
+          &:focus {
+            outline: 2px solid hsl(13, 31%, 54%);
+          }
+        }
+      }
+    }
+
+    .outputContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-basis: 100%;
+      background-color: $veryDarkCyan;
+      padding: 25px;
+      border-radius: $radius;
+
+      .output {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+
+        .infoContainer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .info {
+            :nth-child(1) {
+              font-size: 14px;
+              color: $white;
+            }
+            :nth-child(2) {
+              font-size: 12px;
+              color: $grayishCyan;
+            }
+          }
+
+          .cost {
+            font-size: 40px;
+            color: $strongCyan;
+          }
+        }
+      }
+
+      button {
+        @include reset-button();
+        color: $veryDarkCyan;
+        background-color: $strongCyan;
+        border-radius: 4px;
+        text-transform: uppercase;
+        padding: 7px 0;
+
+        &:hover {
+          background-color: $cyan;
+        }
+      }
+    }
+  }
+
+  .badInput {
+    outline: 2px solid hsl(13, 31%, 54%);
+
+    &:focus {
+      outline: 3px solid hsl(13, 31%, 54%);
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .body {
+    article {
+      width: auto;
+      height: auto;
+      flex-direction: column;
+
+      .inputContainer {
+        .tipSelection {
+          .tipContainer {
+            button {
+              flex-basis: 33%;
+            }
+            input {
+              flex-basis: 33%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
