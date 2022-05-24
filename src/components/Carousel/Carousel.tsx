@@ -61,7 +61,9 @@ const Carousel = ({ width, children }) => {
       <nav>
         <div>
           <p>Component Gallery</p>
-          <p className={styles.small}>Made by Daniel Patularu</p>
+          <p className={styles.small}>
+            Made by <a href="https://github.com/dpatularu">Daniel Patularu</a>
+          </p>
           <div className={styles.controls}>
             <button onClick={scrollLeft}>&#8592;</button>
             {displaySlideNumber()} / {children.length}
