@@ -3,29 +3,33 @@ import styles from "./Carousel.module.scss";
 
 const Carousel = ({ width, children }) => {
   const [stateSlides, setStateSlides] = useState(children);
-  const [visibleSlide, setVisibleSlide] = useState(1);
+  const [currentSlide, setCurrentSlide] = useState(1);
   const [disableAnimation, setDisableAnimation] = useState(false);
 
+  //Prevent changing slides when animations are disabled.
   const scrollLeft = () => {
-    if (visibleSlide === 0 || disableAnimation) return;
-    setVisibleSlide(visibleSlide - 1);
+    if (currentSlide === 0 || disableAnimation) return;
+    setCurrentSlide(currentSlide - 1);
   };
   const scrollRight = () => {
-    if (visibleSlide === stateSlides.length - 1 || disableAnimation) return;
-    setVisibleSlide(visibleSlide + 1);
+    if (currentSlide === stateSlides.length - 1 || disableAnimation) return;
+    setCurrentSlide(currentSlide + 1);
   };
 
+  //The carousel is every slide placed side-by-side horizontally. To change slides, we offset by left margin.
   const calculateLeftMargin = () => {
-    return -visibleSlide * 100;
+    return -currentSlide * 100;
   };
 
+  //This compensates for the indices being off due to the dummy slides.
   const displaySlideNumber = () => {
     const numSlides = stateSlides.length - 1;
-    if (visibleSlide === 0) return numSlides - 1;
-    if (visibleSlide === numSlides) return 1;
-    return visibleSlide;
+    if (currentSlide === 0) return numSlides - 1;
+    if (currentSlide === numSlides) return 1;
+    return currentSlide;
   };
 
+  //Insert dummy slides at the start and end.
   useEffect(() => {
     const appendSlide = children[0];
     const prependSlide = children[children.length - 1];
@@ -33,28 +37,30 @@ const Carousel = ({ width, children }) => {
     setStateSlides([prependSlide, ...children, appendSlide]);
   }, []);
 
+  //When on or beside the dummy slides, disable CSS animations to create a seamless switch for the infinite carousel illusion.
   useEffect(() => {
     const numSlides = stateSlides.length - 1;
-    if (visibleSlide === 0) {
+    //When at the starting dummy slide, disable CSS animation and teleport to the last slide.
+    if (currentSlide === 0) {
       setTimeout(() => {
         setDisableAnimation(true);
-        setVisibleSlide(numSlides - 1);
+        setCurrentSlide(numSlides - 1);
       }, 250);
     }
-
-    if (visibleSlide === 1 || visibleSlide === numSlides - 1) {
+    //When on the real slides, turn on CSS animations.
+    if (currentSlide === 1 || currentSlide === numSlides - 1) {
       setTimeout(() => {
         setDisableAnimation(false);
       }, 250);
     }
-
-    if (visibleSlide === numSlides) {
+    //When at the last dummy slide, disable CSS animation and teleport to the first slide.
+    if (currentSlide === numSlides) {
       setTimeout(() => {
         setDisableAnimation(true);
-        setVisibleSlide(1);
+        setCurrentSlide(1);
       }, 250);
     }
-  }, [visibleSlide]);
+  }, [currentSlide]);
 
   return (
     <>
@@ -71,12 +77,6 @@ const Carousel = ({ width, children }) => {
           </div>
         </div>
       </nav>
-      {/* <button className={styles.left} onClick={scrollLeft}>
-        &#8592;
-      </button>
-      <button className={styles.right} onClick={scrollRight}>
-        &#8594;
-      </button> */}
       <div className={`${styles.carousel}`}>
         <div
           className={`${styles.slider} ${
