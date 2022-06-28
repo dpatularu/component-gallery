@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./Carousel.module.scss";
 
 const Carousel = ({ width, children }) => {
-  const [stateSlides, setStateSlides] = useState(children);
+  const [slides, setSlides] = useState(children);
   const [currentSlide, setCurrentSlide] = useState(1);
   const [disableAnimation, setDisableAnimation] = useState(false);
 
@@ -12,7 +12,7 @@ const Carousel = ({ width, children }) => {
     setCurrentSlide(currentSlide - 1);
   };
   const scrollRight = () => {
-    if (currentSlide === stateSlides.length - 1 || disableAnimation) return;
+    if (currentSlide === slides.length - 1 || disableAnimation) return;
     setCurrentSlide(currentSlide + 1);
   };
 
@@ -23,7 +23,7 @@ const Carousel = ({ width, children }) => {
 
   //This compensates for the indices being off due to the dummy slides.
   const displaySlideNumber = () => {
-    const numSlides = stateSlides.length - 1;
+    const numSlides = slides.length - 1;
     if (currentSlide === 0) return numSlides - 1;
     if (currentSlide === numSlides) return 1;
     return currentSlide;
@@ -34,12 +34,12 @@ const Carousel = ({ width, children }) => {
     const appendSlide = children[0];
     const prependSlide = children[children.length - 1];
 
-    setStateSlides([prependSlide, ...children, appendSlide]);
+    setSlides([prependSlide, ...children, appendSlide]);
   }, []);
 
   //When on or beside the dummy slides, disable CSS animations to create a seamless switch for the infinite carousel illusion.
   useEffect(() => {
-    const numSlides = stateSlides.length - 1;
+    const numSlides = slides.length - 1;
     //When at the starting dummy slide, disable CSS animation and teleport to the last slide.
     if (currentSlide === 0) {
       setTimeout(() => {
@@ -84,7 +84,7 @@ const Carousel = ({ width, children }) => {
           }`}
           style={{ left: `${calculateLeftMargin()}vw` }}
         >
-          {stateSlides.map((slide, index) => (
+          {slides.map((slide, index) => (
             <div
               key={index}
               style={{
